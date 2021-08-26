@@ -1,7 +1,8 @@
-package br.com.travel.placesbooking.usecase;
+package br.com.travel.placesbooking.usecase.impl;
 
 import br.com.travel.placesbooking.domain.Place;
 import br.com.travel.placesbooking.repository.gateway.PlaceGateway;
+import br.com.travel.placesbooking.usecase.ListAllPlacesUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
