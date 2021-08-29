@@ -2,7 +2,7 @@ package br.com.travel.placesbooking.controller;
 
 import br.com.travel.placesbooking.converter.PlaceResourceRequestToPlaceConvert;
 import br.com.travel.placesbooking.converter.PlaceToPlaceResourceResponseConvert;
-import br.com.travel.placesbooking.domain.Place;
+import br.com.travel.placesbooking.domain.PlaceDomain;
 import br.com.travel.placesbooking.resource.PlaceResource;
 import br.com.travel.placesbooking.usecase.ListAllPlacesUseCase;
 import br.com.travel.placesbooking.usecase.SavePlaceUseCase;
@@ -43,7 +43,7 @@ class PlacesBookingControllerTest {
     @DisplayName("Savind a place, expected success")
     public void testShouldExecuteSavePlaceResource() {
 
-        Place place = Place
+        PlaceDomain placeDomain = PlaceDomain
                 .builder()
                 .id("1234")
                 .city("Sao Paulo")
@@ -59,12 +59,12 @@ class PlacesBookingControllerTest {
                 .state("SP")
                 .build();
 
-        when(savePlaceUseCase.execute(any(Place.class))).thenReturn(place);
+        when(savePlaceUseCase.execute(any(PlaceDomain.class))).thenReturn(placeDomain);
         placesBookingController.save(resource);
 
         verify(placeResourceRequestToPlaceConvert, atLeastOnce()).convert(any(PlaceResource.class));
-        verify(placeToPlaceResourceResponseConvert, atLeastOnce()).convert(any(Place.class));
-        verify(savePlaceUseCase, atLeastOnce()).execute(any(Place.class));
+        verify(placeToPlaceResourceResponseConvert, atLeastOnce()).convert(any(PlaceDomain.class));
+        verify(savePlaceUseCase, atLeastOnce()).execute(any(PlaceDomain.class));
 
         assertAll("Booking",
                 () -> assertEquals("Sampa", resource.getName()),
@@ -77,14 +77,14 @@ class PlacesBookingControllerTest {
     @DisplayName("List all place, excpected success")
     public void testShouldExecuteListAllPlace() {
 
-        Place place = Place
+        PlaceDomain placeDomain = PlaceDomain
                 .builder()
                 .name("Sampa")
                 .city("Sao Paulo")
                 .state("SP")
                 .build();
 
-        when(listAllPlacesUseCase.execute(anyInt(), anyInt())).thenReturn(new PageImpl<>(List.of(place)));
+        when(listAllPlacesUseCase.execute(anyInt(), anyInt())).thenReturn(new PageImpl<>(List.of(placeDomain)));
         final var response = placesBookingController.listAll(0, 10);
 
         verify(listAllPlacesUseCase, atLeastOnce()).execute(anyInt(), anyInt());

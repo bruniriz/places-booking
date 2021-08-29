@@ -1,8 +1,8 @@
 package br.com.travel.placesbooking.usecase;
 
-import br.com.travel.placesbooking.domain.Place;
+import br.com.travel.placesbooking.domain.PlaceDomain;
 import org.springframework.data.domain.Page;
 
 public interface ListAllPlacesUseCase {
-    Page<Place> execute(Integer page, Integer size);
+    Page<PlaceDomain> execute(Integer page, Integer size);
 }

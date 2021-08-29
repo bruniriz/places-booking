@@ -1,6 +1,6 @@
 package br.com.travel.placesbooking.usecase.impl;
 
-import br.com.travel.placesbooking.domain.Place;
+import br.com.travel.placesbooking.domain.PlaceDomain;
 import br.com.travel.placesbooking.repository.gateway.PlaceGateway;
 import br.com.travel.placesbooking.usecase.ListAllPlacesUseCase;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ public class ListAllPlacesUseCaseImpl implements ListAllPlacesUseCase {
     private final PlaceGateway placeGateway;
 
     @Override
-    public Page<Place> execute(Integer page, Integer size) {
+    public Page<PlaceDomain> execute(Integer page, Integer size) {
         return placeGateway.listAll(page, size);
     }
 }

@@ -1,19 +1,18 @@
-package br.com.travel.placesbooking.usecase.impl;
+package br.com.travel.placesbooking.usecase;
 
 import br.com.travel.placesbooking.domain.PlaceDomain;
 import br.com.travel.placesbooking.repository.gateway.PlaceGateway;
-import br.com.travel.placesbooking.usecase.SavePlaceUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class SavePlaceUseCaseImpl implements SavePlaceUseCase {
+public class UpdatePlaceUseCaseImpl implements UpdatePlaceUseCase {
 
     private final PlaceGateway placeGateway;
 
     @Override
     public PlaceDomain execute(PlaceDomain placeDomain) {
-        return placeGateway.save(placeDomain);
+        return placeGateway.update(placeDomain);
     }
 }
